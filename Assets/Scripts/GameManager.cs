@@ -16,8 +16,6 @@ namespace HomeGod
         public Species[] speciesPool;
 
         private Species nextInLine;
-
-
         void Awake()
         {
             //Check if instance already exists
@@ -46,7 +44,9 @@ namespace HomeGod
                 planets.Add(item.GetComponent<Planet>());
             }
             generationCoroutine = StartCoroutine("consumeResources");
-            nextSpecies();
+
+            nextInLine = nextSpecies();
+
         }
 
         // Update is called once per frame
@@ -73,13 +73,14 @@ namespace HomeGod
         public void chooseNewHome(Planet newHome)
         {
             newHome.populate(nextInLine);
+            nextInLine.initiateScroll(new Vector3(1000, 0, 0));
             nextInLine = nextSpecies();
         }
 
         Species nextSpecies()
         {
             int index = Random.Range(0, speciesPool.Length);
-            return Instantiate(speciesPool[index]); 
+            return Instantiate(speciesPool[index]);
         }
     }
 }
