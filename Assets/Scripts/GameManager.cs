@@ -12,7 +12,7 @@ namespace HomeGod
 
         public static GameManager instance = null;
         private Coroutine generationCoroutine;
-        public Planet[] planets;
+        public List<Planet> planets;
         public Species[] speciesPool;
 
         private Species nextInLine;
@@ -39,7 +39,12 @@ namespace HomeGod
         // Start is called before the first frame update
         void Start()
         {
-            planets = GameObject.FindGameObjectsWithTag("Planet");
+            GameObject[] gameObjects = GameObject.FindGameObjectsWithTag("Planet");
+            planets = new List<Planet>();
+            foreach (GameObject item in gameObjects)
+            {
+                planets.Add(item.GetComponent<Planet>());
+            }
             generationCoroutine = StartCoroutine("consumeResources");
             nextSpecies();
         }
@@ -60,7 +65,8 @@ namespace HomeGod
                     //TODO
                     planet.lifeCycling();
                 }
-                yield return new WaitForSeconds(5.0f * Time.fixedDeltaTime);
+                
+                yield return new WaitForSeconds(250.0f * Time.fixedDeltaTime);
             }
         }
 
