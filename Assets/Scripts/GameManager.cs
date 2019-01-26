@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using HomeGod;
+using UnityStandardAssets;
+
 
 
 namespace HomeGod
@@ -16,6 +18,9 @@ namespace HomeGod
         public Species[] speciesPool;
 
         private Species nextInLine;
+
+      
+
 
 
         void Awake()
@@ -39,8 +44,9 @@ namespace HomeGod
         // Start is called before the first frame update
         void Start()
         {
-            planets = GameObject.FindGameObjectsWithTag("Planet");
+          //planets = GameObject.FindGameObjectsWithTag("Planet");
             generationCoroutine = StartCoroutine("consumeResources");
+      
             nextSpecies();
         }
 
@@ -58,7 +64,7 @@ namespace HomeGod
                 foreach (Planet planet in planets)
                 {
                     //TODO
-                    planet.lifeCycling();
+                  //  planet.lifeCycling();
                 }
                 yield return new WaitForSeconds(5.0f * Time.fixedDeltaTime);
             }
@@ -70,7 +76,7 @@ namespace HomeGod
             nextInLine = nextSpecies();
         }
 
-        Species nextSpecies()
+        public Species nextSpecies()
         {
             int index = Random.Range(0, speciesPool.Length);
             return Instantiate(speciesPool[index]); 
