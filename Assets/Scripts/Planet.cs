@@ -13,7 +13,7 @@ namespace HomeGod
         public ResourcesComposition resourcesComposition;
         public List<Species> population = new List<Species>();
 
-        public PlanetUI planetUI;
+        private PlanetUI planetUI;
 
         //IConsummable Interface
         public void lifeCycling()
@@ -33,16 +33,12 @@ namespace HomeGod
         }
 
 
-        // Start is called before the first frame update
-        void Start()
+        /// <summary>
+        /// Awake is called when the script instance is being loaded.
+        /// </summary>
+        void Awake()
         {
-
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-
+            this.planetUI = gameObject.GetComponentInChildren<PlanetUI>();
         }
     }
 }
