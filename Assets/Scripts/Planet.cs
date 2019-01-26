@@ -8,19 +8,28 @@ namespace HomeGod
 {
     public class Planet : MonoBehaviour, IConsummable
     {
-
+        public string planetName;
+        [HideInInspector] public string planetStats = "";
         public ResourcesComposition resourcesComposition;
         public List<Species> population = new List<Species>();
+
+        public PlanetUI planetUI;
 
         //IConsummable Interface
         public void lifeCycling()
         {
-            throw new System.NotImplementedException();
+           Debug.Log("PLANETE" + this.planetName + " REPORT FOR DUTY");
         }
 
         public void populate(Species newSpecies)
         {
             population.Add(newSpecies);
+            newSummaryText();
+            planetUI.changeSummaryText(planetStats);
+        }
+
+        void newSummaryText(){
+            planetStats = "Population: "+ this.population.Count;
         }
 
 

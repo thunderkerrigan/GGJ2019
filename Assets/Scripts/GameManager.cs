@@ -39,6 +39,7 @@ namespace HomeGod
         // Start is called before the first frame update
         void Start()
         {
+            planets = GameObject.FindGameObjectsWithTag("Planet");
             generationCoroutine = StartCoroutine("consumeResources");
             nextSpecies();
         }
@@ -63,7 +64,7 @@ namespace HomeGod
             }
         }
 
-        void chooseNewHome(Planet newHome)
+        public void chooseNewHome(Planet newHome)
         {
             newHome.populate(nextInLine);
             nextInLine = nextSpecies();
@@ -72,7 +73,7 @@ namespace HomeGod
         Species nextSpecies()
         {
             int index = Random.Range(0, speciesPool.Length);
-            return speciesPool[index];
+            return Instantiate(speciesPool[index]); 
         }
     }
 }
