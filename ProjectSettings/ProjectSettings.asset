@@ -4,7 +4,7 @@
 PlayerSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 15
-  productGUID: 7cfc1cdab8768ce46b343664b52d1780
+  productGUID: 8621c2a595db4f545a896710a1cf271e
   AndroidProfiler: 0
   AndroidFilterTouchesWhenObscured: 0
   AndroidEnableSustainedPerformanceMode: 0
@@ -688,7 +688,7 @@ PlayerSettings:
   apiCompatibilityLevel: 2
   cloudProjectId: f3b5076c-3fba-485d-91dc-b6f3222ead9f
   framebufferDepthMemorylessMode: 0
-  projectName: GGJ2019
+  projectName: Platformer-2D
   organizationId: tsr-games
   cloudEnabled: 0
   enableNativePlatformBackendsForNewInputSystem: 0
