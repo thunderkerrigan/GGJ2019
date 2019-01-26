@@ -2,12 +2,26 @@
 using System.Collections.Generic;
 using UnityEngine;
 using HomeGod.Struct;
+using HomeGod.Interface;
 
-    public class Planet : MonoBehaviour
+namespace HomeGod
+{
+    public class Planet : MonoBehaviour, IConsummable
     {
 
         public ResourcesComposition resourcesComposition;
-        public Species[] population; 
+        public List<Species> population = new List<Species>();
+
+        //IConsummable Interface
+        public void lifeCycling()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void populate(Species newSpecies)
+        {
+            population.Add(newSpecies);
+        }
 
 
         // Start is called before the first frame update
@@ -22,4 +36,4 @@ using HomeGod.Struct;
 
         }
     }
-
+}
