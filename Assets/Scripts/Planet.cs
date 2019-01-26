@@ -20,13 +20,38 @@ namespace HomeGod
         public void lifeCycling()
         {
             population.ForEach(depleteThePlanet);
+            checkPlanetHealth();
             newSummaryText();
         }
 
+        private void checkPlanetHealth()
+        {
+            if(resourcesComposition.naturalResources <= 0){
+                //GAME OVER
+            }
+            if (resourcesComposition.gases.oxygen == 0)
+            {
+                population.FindAll(pop => pop.resourcesInteraction.gases.oxygen < 0).ForEach(killPopulation);
+            }
+            if (resourcesComposition.gases.carbon == 0)
+            {
+                population.FindAll(pop => pop.resourcesInteraction.gases.carbon < 0).ForEach(killPopulation);
+            }
+            if (resourcesComposition.gases.hydrogen == 0)
+            {
+                population.FindAll(pop => pop.resourcesInteraction.gases.hydrogen < 0).ForEach(killPopulation);
+            }
+                population = population.FindAll(pop => pop != null);
+        }
         public void depleteThePlanet(Species pop)
         {
-            Debug.Log("COUCOU CHATON");
             resourcesComposition += pop.resourcesInteraction;
+        }
+        public void killPopulation(Species pop)
+        {
+            pop.gameObject.SetActive(false);
+            Destroy(pop.gameObject);
+            population.Remove(pop);
         }
 
         public void populate(Species newSpecies)
