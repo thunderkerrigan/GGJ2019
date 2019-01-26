@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using HomeGod.Struct;
@@ -18,18 +19,26 @@ namespace HomeGod
         //IConsummable Interface
         public void lifeCycling()
         {
-           Debug.Log("PLANETE" + this.planetName + " REPORT FOR DUTY");
+            population.ForEach(depleteThePlanet);
+            newSummaryText();
+        }
+
+        public void depleteThePlanet(Species pop)
+        {
+            Debug.Log("COUCOU CHATON");
+            resourcesComposition += pop.resourcesInteraction;
         }
 
         public void populate(Species newSpecies)
         {
             population.Add(newSpecies);
             newSummaryText();
-            planetUI.changeSummaryText(planetStats);
         }
 
-        void newSummaryText(){
-            planetStats = "Population: "+ this.population.Count;
+        void newSummaryText()
+        {
+            planetStats = "Population: " + this.population.Count + "\n" + this.resourcesComposition.ToString();
+            planetUI.changeSummaryText(planetStats);
         }
 
 

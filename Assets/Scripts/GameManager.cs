@@ -65,9 +65,9 @@ namespace HomeGod
                 foreach (Planet planet in planets)
                 {
                     //TODO
-                  //  planet.lifeCycling();
+                    planet.lifeCycling();
                 }
-                
+
                 yield return new WaitForSeconds(250.0f * Time.fixedDeltaTime);
             }
         }
