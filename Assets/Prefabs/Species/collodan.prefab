@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1574968316888412035}
   - component: {fileID: 1170131514}
   m_Layer: 0
-  m_Name: collodan
+  m_Name: Collodan
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -98,10 +98,10 @@ MonoBehaviour:
       gas: 40
       earth: 40
     gases:
-      hydrogen: -2
-      oxygen: 1
-      carbon: 1
-    naturalResources: -0.15
+      hydrogen: -20
+      oxygen: 10
+      carbon: 10
+    naturalResources: -15
   behavior: 2
   foodChainCategory: 0
   needs:

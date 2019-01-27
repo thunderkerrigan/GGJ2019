@@ -99,9 +99,9 @@ MonoBehaviour:
       earth: 60
     gases:
       hydrogen: 0
-      oxygen: -2
-      carbon: 2
-    naturalResources: -1
+      oxygen: -20
+      carbon: 20
+    naturalResources: -10
   behavior: 2
   foodChainCategory: 1
   needs:

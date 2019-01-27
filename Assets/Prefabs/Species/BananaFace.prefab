@@ -98,10 +98,10 @@ MonoBehaviour:
       gas: 20
       earth: 20
     gases:
-      hydrogen: 0.25
-      oxygen: 0.25
-      carbon: -0.5
-    naturalResources: -0.03
+      hydrogen: 2.5
+      oxygen: 2.2
+      carbon: -5
+    naturalResources: -10
   behavior: 0
   foodChainCategory: 0
   needs:

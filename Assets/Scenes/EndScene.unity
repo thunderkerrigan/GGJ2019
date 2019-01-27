@@ -353,9 +353,9 @@ MonoBehaviour:
     m_FontSize: 28
     m_FontStyle: 0
     m_BestFit: 1
-    m_MinSize: 2
+    m_MinSize: 12
     m_MaxSize: 40
-    m_Alignment: 4
+    m_Alignment: 3
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
@@ -461,7 +461,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 728047477}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0ba34f612f1be3940bbbbe1442ec1f8c, type: 3}
+  m_Script: {fileID: 11500000, guid: 4f349ac064a06d245867f2e852323572, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1395402505
@@ -544,8 +544,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 728047478}
-        m_MethodName: ManageScene
-        m_Mode: 5
+        m_MethodName: Quit
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -663,7 +663,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Retry
+  m_Text: Quit
 --- !u!222 &1674171147
 CanvasRenderer:
   m_ObjectHideFlags: 0

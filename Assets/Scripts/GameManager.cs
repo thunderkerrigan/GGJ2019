@@ -66,7 +66,8 @@ namespace HomeGod
             if (deathCount >= 3)
             {
                 //GAME OVER
-                SceneManager.LoadScene("EndScene", LoadSceneMode.Single);
+                SceneManager.LoadScene("EndScene" , LoadSceneMode.Single);
+                this.gameObject.SetActive(false);
             }
         }
 
