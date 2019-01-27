@@ -1,0 +1,56 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &84832934354923856
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 84832934354923858}
+  - component: {fileID: 84832934354923857}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &84832934354923858
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 84832934354923856}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &84832934354923857
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 84832934354923856}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9bbdc99fe4fd234b80601ca27104557, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  planets:
+  - {fileID: 2332469756445827695, guid: 6466062b7ae24cb43bcc76633977679b, type: 3}
+  - {fileID: 1154897697, guid: e035e6da5744d5c448551b175593f5d0, type: 3}
+  - {fileID: 3536050324864911040, guid: b51d0e394b1c8a340875e74592b4da67, type: 3}
+  - {fileID: 736541780394128170, guid: d68af19746716d347909af5dae15f878, type: 3}
+  speciesPool:
+  - {fileID: 8103445073154199318, guid: 4c2ce1949f7cc0e46b570005e2dcc078, type: 3}
+  - {fileID: 1170131514, guid: ac4cf6aae9f5cc3408ada11a4111c173, type: 3}
+  - {fileID: 1170131514, guid: e6510fde9babcf94c8ae25c93485225f, type: 3}
+  - {fileID: 6644637816535974284, guid: 5bdda0685e6b8b84392808b750b301e0, type: 3}
+  - {fileID: 257890362410614307, guid: d1fe2c7b4138d584ea2a812102c99934, type: 3}
