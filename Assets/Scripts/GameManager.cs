@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using HomeGod;
 using UnityStandardAssets;
-
-
+using UnityEngine.SceneManagement;
+using System.Linq;
+using UnityEngine.UI;
 
 namespace HomeGod
 {
@@ -50,6 +51,8 @@ namespace HomeGod
             generationCoroutine = StartCoroutine("consumeResources");
 
             nextInLine = nextSpecies();
+            PlayerPrefs.SetInt("added", 0);
+            PlayerPrefs.SetInt("killed", 0);
             
         }
 
@@ -59,6 +62,7 @@ namespace HomeGod
             if (deathCount >= 3)
             {
                 //GAME OVER
+                SceneManager.LoadScene("EndScene", LoadSceneMode.Single);
             }
         }
 
@@ -67,7 +71,7 @@ namespace HomeGod
             while (true)
             {
                 print("consumeResources");
-                foreach (Planet planet in planets)
+                foreach (Planet planet in planets.ToList())
                 {
                     //TODO
                     planet.lifeCycling();

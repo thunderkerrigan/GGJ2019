@@ -44,10 +44,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   planets:
-  - {fileID: 8552482217652617779, guid: c02d11698c3e4744692c01957578406f, type: 3}
-  - {fileID: 8552482217652617779, guid: e035e6da5744d5c448551b175593f5d0, type: 3}
-  - {fileID: 8552482217652617779, guid: 3f024d359fea07345af859c9457979bf, type: 3}
-  - {fileID: 8552482217652617779, guid: 95fbe4ce4ccb32744a3e5a4679718105, type: 3}
+  - {fileID: 2332469756445827695, guid: 6466062b7ae24cb43bcc76633977679b, type: 3}
+  - {fileID: 1154897697, guid: e035e6da5744d5c448551b175593f5d0, type: 3}
+  - {fileID: 3536050324864911040, guid: b51d0e394b1c8a340875e74592b4da67, type: 3}
+  - {fileID: 736541780394128170, guid: d68af19746716d347909af5dae15f878, type: 3}
   speciesPool:
   - {fileID: 8103445073154199318, guid: 4c2ce1949f7cc0e46b570005e2dcc078, type: 3}
   - {fileID: 1170131514, guid: ac4cf6aae9f5cc3408ada11a4111c173, type: 3}

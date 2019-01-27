@@ -75,6 +75,8 @@ namespace HomeGod
         }
         public void killPopulation(Species pop)
         {
+            int killed = PlayerPrefs.GetInt("killed");
+            PlayerPrefs.SetInt("killed", killed+1);
             pop.gameObject.SetActive(false);
             Destroy(pop.gameObject);
             population.Remove(pop);
@@ -99,6 +101,8 @@ namespace HomeGod
 
         public void populate(Species newSpecies)
         {
+            int added = PlayerPrefs.GetInt("added");
+            PlayerPrefs.SetInt("added", added+1);
             population.Add(newSpecies);
             newSummaryText();
         }
