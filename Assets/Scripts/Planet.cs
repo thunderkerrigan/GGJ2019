@@ -6,6 +6,7 @@ using HomeGod.Struct;
 using HomeGod.Interface;
 using HomeGod.Enum;
 
+
 namespace HomeGod
 {
     public class Planet : MonoBehaviour, IConsummable
