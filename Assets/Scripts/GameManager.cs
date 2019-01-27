@@ -20,6 +20,8 @@ namespace HomeGod
 
         private int deathCount = 0;
 
+        private SpeciesUI speciesUI;
+
         private Species nextInLine;
         void Awake()
         {
@@ -42,6 +44,8 @@ namespace HomeGod
         // Start is called before the first frame update
         void Start()
         {
+            GameObject speciesUIObject = GameObject.Find("SpeciesPanel");
+            speciesUI = speciesUIObject.GetComponent<SpeciesUI>();
             GameObject[] gameObjects = GameObject.FindGameObjectsWithTag("Planet");
             planets = new List<Planet>();
             foreach (GameObject item in gameObjects)
@@ -93,6 +97,7 @@ namespace HomeGod
             int index = Random.Range(0, speciesPool.Length);
             Species newSpecies = Instantiate(speciesPool[index]);
             newSpecies.name = speciesPool[index].name;
+            speciesUI.showSpecies(newSpecies);
             return newSpecies;
         }
         public void newPlanetDeath(Planet planet){
