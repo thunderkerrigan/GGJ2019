@@ -11,6 +11,8 @@ namespace HomeGod
         public Text titleText;
         public Text summaryText;
 
+        public Button chooseHomeButton;
+
         void Awake()
         {
             parentPlanet = transform.parent.GetComponent<Planet>();

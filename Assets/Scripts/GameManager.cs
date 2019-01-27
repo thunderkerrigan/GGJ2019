@@ -17,6 +17,8 @@ namespace HomeGod
         public List<Planet> planets;
         public Species[] speciesPool;
 
+        private int deathCount = 0;
+
         private Species nextInLine;
         void Awake()
         {
@@ -48,13 +50,16 @@ namespace HomeGod
             generationCoroutine = StartCoroutine("consumeResources");
 
             nextInLine = nextSpecies();
-
+            
         }
 
         // Update is called once per frame
         void Update()
         {
-
+            if (deathCount >= 3)
+            {
+                //GAME OVER
+            }
         }
 
         IEnumerator consumeResources()
@@ -85,6 +90,10 @@ namespace HomeGod
             Species newSpecies = Instantiate(speciesPool[index]);
             newSpecies.name = speciesPool[index].name;
             return newSpecies;
+        }
+        public void newPlanetDeath(Planet planet){
+            deathCount++;
+            planets.Remove(planet);
         }
     }
 }

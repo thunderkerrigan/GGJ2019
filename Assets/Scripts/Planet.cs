@@ -30,6 +30,9 @@ namespace HomeGod
             if (resourcesComposition.naturalResources <= 0)
             {
                 //GAME OVER
+                planetUI.chooseHomeButton.interactable = false;
+                GameManager.instance.newPlanetDeath(this);
+                population.ForEach(killPopulation);
             }
             if (resourcesComposition.gases.oxygen == 0)
             {

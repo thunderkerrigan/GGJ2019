@@ -331,6 +331,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   titleText: {fileID: 8957078045688039217}
   summaryText: {fileID: 6155187225097374104}
+  chooseHomeButton: {fileID: 7324118779041660964}
 --- !u!1 &7098934439359928614
 GameObject:
   m_ObjectHideFlags: 0
