@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 257890362410614306}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 30, y: 30, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -104,3 +104,18 @@ MonoBehaviour:
     naturalResources: -0.6
   behavior: 2
   foodChainCategory: 2
+  needs:
+    securityFoodChainNeeds:
+    - category: 0
+      preferencePercentage: 34
+    - category: 1
+      preferencePercentage: 33
+    - category: 2
+      preferencePercentage: 33
+    securityBehaviorNeeds:
+    - category: 0
+      preferencePercentage: 40
+    - category: 1
+      preferencePercentage: 0
+    - category: 2
+      preferencePercentage: 60

@@ -1,8 +1,11 @@
 using System;
+using System.Collections;
+using System.Collections.Generic;
+using HomeGod.Enum;
 
 namespace HomeGod.Struct
 {
-    [System.Serializable]
+    [Serializable]
     public struct GasComposition
     {
         public float hydrogen;
@@ -25,20 +28,29 @@ namespace HomeGod.Struct
             return "GAS:\nHydrogen: " + this.hydrogen + " %\nOxygen: " + this.oxygen + "%\ncarbon: " + this.carbon + "%\n";
         }
     }
-    [System.Serializable]
+    [Serializable]
     public struct EnvironmentComposition
     {
         public float water;
         public float gas;
         public float earth;
 
+        public float wellnessFeeling(EnvironmentComposition environmentToCheck){
+            float diffWater = Math.Abs(this.water - environmentToCheck.water);
+            float diffGas = Math.Abs(this.gas - environmentToCheck.gas);
+            float diffEarth = Math.Abs(this.earth - environmentToCheck.earth);
+            return 45 - (diffEarth+diffGas+diffWater);
+        }
+
     }
-    [System.Serializable]
+    [Serializable]
     public struct ResourcesComposition
     {
         public EnvironmentComposition environment;
         public GasComposition gases;
         public float naturalResources;
+
+        
 
         public static ResourcesComposition operator +(ResourcesComposition c1, ResourcesComposition c2)
         {
@@ -51,6 +63,40 @@ namespace HomeGod.Struct
         public override string ToString()
         {
             return "Natural Resources: " + this.naturalResources + " %\n" + this.gases.ToString();
+        }
+    }
+    [Serializable]
+    public struct SecurityFoodChainNeed
+    {
+        public FoodChain category;
+        public float preferencePercentage;
+        public float securityFeeling(SecurityFoodChainNeed securityToCheck){
+            float diff = Math.Abs(this.preferencePercentage - securityToCheck.preferencePercentage);
+            return 15 - diff;
+        }
+    }
+    [Serializable]
+    public struct SecurityBehaviorNeed
+    {
+        public Behavior category;
+        public float preferencePercentage;
+        public float securityFeeling(SecurityBehaviorNeed securityToCheck){
+            float diff = Math.Abs(this.preferencePercentage - securityToCheck.preferencePercentage);
+            return 15 - diff;
+        }
+    }
+    [Serializable]
+    public struct Needs
+    {
+        public List<SecurityFoodChainNeed> securityFoodChainNeeds;
+        public List<SecurityBehaviorNeed> securityBehaviorNeeds;
+        public float securityFeeling(SecurityBehaviorNeed securityToCheck){
+            SecurityBehaviorNeed need = securityBehaviorNeeds.Find(n => n.category == securityToCheck.category);
+            return need.securityFeeling(securityToCheck);
+        }
+        public float securityFeeling(SecurityFoodChainNeed securityToCheck){
+            SecurityFoodChainNeed need = securityFoodChainNeeds.Find(n => n.category == securityToCheck.category);
+            return need.securityFeeling(securityToCheck);
         }
     }
 }

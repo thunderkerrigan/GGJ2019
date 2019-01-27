@@ -104,3 +104,18 @@ MonoBehaviour:
     naturalResources: -1
   behavior: 2
   foodChainCategory: 1
+  needs:
+    securityFoodChainNeeds:
+    - category: 0
+      preferencePercentage: 80
+    - category: 1
+      preferencePercentage: 10
+    - category: 2
+      preferencePercentage: 10
+    securityBehaviorNeeds:
+    - category: 0
+      preferencePercentage: 30
+    - category: 1
+      preferencePercentage: 30
+    - category: 2
+      preferencePercentage: 40

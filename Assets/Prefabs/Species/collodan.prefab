@@ -102,5 +102,20 @@ MonoBehaviour:
       oxygen: 1
       carbon: 1
     naturalResources: -0.15
-  behavior: 1
-  foodChainCategory: 2
+  behavior: 2
+  foodChainCategory: 0
+  needs:
+    securityFoodChainNeeds:
+    - category: 0
+      preferencePercentage: 15
+    - category: 1
+      preferencePercentage: 45
+    - category: 2
+      preferencePercentage: 40
+    securityBehaviorNeeds:
+    - category: 0
+      preferencePercentage: 10
+    - category: 1
+      preferencePercentage: 50
+    - category: 2
+      preferencePercentage: 40

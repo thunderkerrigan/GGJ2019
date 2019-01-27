@@ -6,11 +6,25 @@ using HomeGod.Enum;
 
 namespace HomeGod
 {
+
+    public class SpeciesComparer : IEqualityComparer<Species>
+    {
+        public bool Equals(Species x, Species y)
+        {
+            return x.gameObject.name == y.gameObject.name;
+        }
+
+        public int GetHashCode(Species obj)
+        {
+            return obj.gameObject.name.GetHashCode();
+        }
+    }
     public class Species : MonoBehaviour
     {
         public ResourcesComposition resourcesInteraction;
         public Behavior behavior;
         public FoodChain foodChainCategory;
+        public Needs needs;
 
         Coroutine scrollCoroutine;
         float scrollSpeed = 750f;
@@ -23,7 +37,7 @@ namespace HomeGod
         {
             StopAllCoroutines();
             this.transform.position = start;
-            scrollCoroutine = StartCoroutine("scroll",end);
+            scrollCoroutine = StartCoroutine("scroll", end);
         }
 
         /// <summary>
@@ -32,7 +46,6 @@ namespace HomeGod
         void Awake()
         {
             initiateScroll(new Vector3(-1000, 0, 0), new Vector3(0, 0, 0));
-
         }
         IEnumerator scroll(Vector3 destination)
         {
@@ -43,8 +56,17 @@ namespace HomeGod
                 transform.position = Vector3.MoveTowards(currentPosition, destination, Time.fixedDeltaTime * scrollSpeed);
                 yield return new WaitForSeconds(Time.fixedDeltaTime);
             }
-        
+
         }
+
+        public string happiness(EnvironmentComposition planetComposition, List<SecurityBehaviorNeed> behaviorStats, List<SecurityFoodChainNeed> foodChainStats)
+        {
+            float happiness = resourcesInteraction.environment.wellnessFeeling(planetComposition);
+            behaviorStats.ForEach(b => happiness += needs.securityFeeling(b));
+            foodChainStats.ForEach(f => happiness += needs.securityFeeling(f));
+            return this.gameObject.name + " happiness: " + happiness;
+        }
+
     }
 }
 

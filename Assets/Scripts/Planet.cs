@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using HomeGod.Struct;
 using HomeGod.Interface;
+using HomeGod.Enum;
 
 namespace HomeGod
 {
@@ -26,7 +27,8 @@ namespace HomeGod
 
         private void checkPlanetHealth()
         {
-            if(resourcesComposition.naturalResources <= 0){
+            if (resourcesComposition.naturalResources <= 0)
+            {
                 //GAME OVER
             }
             if (resourcesComposition.gases.oxygen == 0)
@@ -41,17 +43,54 @@ namespace HomeGod
             {
                 population.FindAll(pop => pop.resourcesInteraction.gases.hydrogen < 0).ForEach(killPopulation);
             }
-                population = population.FindAll(pop => pop != null);
+            population = population.FindAll(pop => pop != null);
         }
         public void depleteThePlanet(Species pop)
         {
             resourcesComposition += pop.resourcesInteraction;
+        }
+
+        public string determineWellbeings()
+        {
+            String wellBeings = "WELLBEINGS:\n";
+            HashSet<Species> uniqueSpecies = new HashSet<Species>(population, new SpeciesComparer());
+            List<SecurityBehaviorNeed> behaviorStats = new List<SecurityBehaviorNeed>();
+            behaviorStats.Add(determineStatsFor(Behavior.Pacifist));
+            behaviorStats.Add(determineStatsFor(Behavior.Neutral));
+            behaviorStats.Add(determineStatsFor(Behavior.Aggressive));
+            List<SecurityFoodChainNeed> foodChainStats = new List<SecurityFoodChainNeed>();
+            foodChainStats.Add(determineStatsFor(FoodChain.Parasitic));
+            foodChainStats.Add(determineStatsFor(FoodChain.Predator));
+            foodChainStats.Add(determineStatsFor(FoodChain.Prey));
+           
+            foreach (Species species in uniqueSpecies)
+            {
+                wellBeings += species.happiness(this.resourcesComposition.environment,behaviorStats, foodChainStats) +"\n";
+            }
+            return wellBeings;
         }
         public void killPopulation(Species pop)
         {
             pop.gameObject.SetActive(false);
             Destroy(pop.gameObject);
             population.Remove(pop);
+        }
+
+        public SecurityBehaviorNeed determineStatsFor(Behavior behavior){
+            float populationWithBehaviorCount = population.FindAll(p => p.behavior == behavior).Count;
+            float percentage = populationWithBehaviorCount/population.Count*100f;
+            SecurityBehaviorNeed need = new SecurityBehaviorNeed();
+            need.category = behavior;
+            need.preferencePercentage = percentage;
+            return need;
+        }
+        public SecurityFoodChainNeed determineStatsFor(FoodChain foodChain){
+            float populationWithFoodChainCount = population.FindAll(p => p.foodChainCategory == foodChain).Count;
+            float percentage = populationWithFoodChainCount/population.Count*100f;
+            SecurityFoodChainNeed need = new SecurityFoodChainNeed();
+            need.category = foodChain;
+            need.preferencePercentage = percentage;
+            return need;
         }
 
         public void populate(Species newSpecies)
@@ -62,7 +101,8 @@ namespace HomeGod
 
         void newSummaryText()
         {
-            planetStats = "Population: " + this.population.Count + "\n" + this.resourcesComposition.ToString();
+            string happiness = determineWellbeings();
+            planetStats = "Population: " + this.population.Count + "\n" + this.resourcesComposition.ToString() +"\n" + happiness;
             planetUI.changeSummaryText(planetStats);
         }
 

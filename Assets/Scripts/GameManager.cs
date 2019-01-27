@@ -82,7 +82,9 @@ namespace HomeGod
         public Species nextSpecies()
         {
             int index = Random.Range(0, speciesPool.Length);
-            return Instantiate(speciesPool[index]);
+            Species newSpecies = Instantiate(speciesPool[index]);
+            newSpecies.name = speciesPool[index].name;
+            return newSpecies;
         }
     }
 }
